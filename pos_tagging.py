@@ -55,6 +55,13 @@ for word in tokens:
 
 print sorted(all_word_counts.items(), key = itemgetter(1))
 
+myFile = open('NBA_all_counts.csv', 'w')
+with myFile:
+    writer = csv.writer(myFile)
+    writer.writerows(all_word_counts.items())
+     
+print("Writing all counts complete")
+
 pos_labels = nltk.pos_tag(tokens)
 # print pos_labels
 
@@ -69,11 +76,11 @@ for pair in pos_labels:
 
 print sorted(descriptive_counts.items(), key=itemgetter(1)) #sort by adjective count in ascending order
 
-myFile = open('NBAcounts.csv', 'w')
+myFile = open('NBA_descriptive_counts.csv', 'w')
 with myFile:
     writer = csv.writer(myFile)
     writer.writerows(descriptive_counts.items())
      
-print("Writing complete")
+print("Writing descriptive counts complete")
 
 print("--- %s seconds ---" % (time.time() - start_time))
